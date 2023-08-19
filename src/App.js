@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import {Fragment} from "react"
+import { Route, Routes, Outlet } from "react-router-dom"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import "../src/assets/scss/app.scss"
+import "bootstrap/dist/css/bootstrap.css"
+import HomePage from "./screens/homepage"
+import { routes } from "./route"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <HomePage path={'/'}>
+        <TransitionGroup>
+          <CSSTransition timeout={0} unmountOnExit>
+            <Routes>
+              {routes.map(({path, Component, name}) => (
+                <Route key={path} exact path={`${path}`} element={<Component name={name} />}>
+                  
+                </Route>
+              ))}
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
+      </HomePage>
+    </Fragment>
+  )
 }
 
 export default App;
