@@ -73,7 +73,29 @@
     }
   }
 }
+.section-4 {
+  height: 650vh;
+  background-color: #fff;
+}
+.animate-box {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.box-items {
+  position: relative;
+  height: 5.2083333333vw;
+  transition: all ease-out 0.5s;
+  font-size: 2.65625vw;
+}
 .top-item {
+  background-color: red;
+  height: 5.2083333333vw;
+  line-height: 5.2083333333vw;
+  transition: all ease-out 0.5s;
   opacity: 0;
   transform: translateY(0%);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;

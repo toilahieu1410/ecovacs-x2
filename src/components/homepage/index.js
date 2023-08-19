@@ -49,31 +49,32 @@ const listData = [
 ]
 const Home = (props) => {
 
-const topItems = document.querySelectorAll('.top-item');
-  function setActiveItem() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  const topItems = [
+    "更薄：全新方形",
+    "更窄：",
+    "更长：",
+    "更贴：",
+    "更高：",
+    "更强：",
+  ];
+
+  const handleScroll = () => {
     const windowHeight = window.innerHeight;
-    const scrollPosition = window.scrollY;
+    const newPosition = window.scrollY;
+    const newIndex = Math.floor(newPosition / windowHeight);
     
-    topItems.forEach((item, index) => {
-      const rect = item.getBoundingClientRect();
-      const itemTop = rect.top + scrollPosition;
-      const translateY = ((itemTop / windowHeight) * 100).toFixed(2);
-      
-      if (itemTop >= 0 && itemTop <= windowHeight) {
-        item.style.transform = `translateY(-${translateY}%)`;
-        item.classList.add('active');
-      } else {
-        item.style.transform = 'translateY(-100%)';
-        item.classList.remove('active');
-      }
-    });
-  }
-  
-  window.addEventListener('scroll', setActiveItem);
-  window.addEventListener('resize', setActiveItem);
-  
-  // Gọi hàm một lần khi trang tải lên để xác định các phần tử active ban đầu
-  setActiveItem();
+    setScrollPosition(newPosition);
+    setActiveIndex(newIndex);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
 
   return (
     <div className="homepage">
@@ -126,34 +127,19 @@ const topItems = document.querySelectorAll('.top-item');
           </div>
         </div>
         <div className="section-4">
-        <div className="box-items">
-    <div className="top-item">更薄：全新方形 <span>
-      <span id="pccounter1">95</span>
-      <i>mm</i>
-    </span>超薄机身 </div>
-    <div className="top-item">更窄： <span>
-      <span id="pccounter2">320</span>
-      <i>mm</i>
-    </span>超窄机身 </div>
-    <div className="top-item">更长： <span>
-      <span id="pccounter3">200</span>
-      <i>mm</i>
-    </span>超长滚刷 </div>
-    <div className="top-item">更贴： <span>
-      <span id="pccounter4">99.77</span>
-      <i>%</i>
-    </span>单位面积清洁覆盖 </div>
-    <div className="top-item">更高： <span>
-      <span id="pccounter5">15</span>
-      <i>mm</i>
-    </span>拖布抬升 <sup>9</sup>
-    </div>
-    <div className="top-item">更强： <span>
-      <span id="pccounter6">8,000</span>
-      <i>Pa</i>
-    </span>飓风吸力 <sup>19</sup>
-    </div>
-  </div>
+        <div className="animate-box">
+        <div className="out-box">
+        <div className="box-items" style={{ transform: `translateY(-${activeIndex * 100}%)` }}>
+        {topItems.map((item, index) => (
+          <div key={index} className={`top-item ${index === activeIndex ? 'active' : ''}`}>
+            {item}
+          </div>
+        ))}
+      </div>
+        </div>
+        </div>
+   
+     
         </div>
       </div>
     </div>
