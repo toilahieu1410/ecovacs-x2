@@ -1,6 +1,10 @@
 @import "setting";
+@import "animate";
 @import "homepage/header";
+@import "homepage/footer";
 @import "homepage/homepage";
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
+
 body {
 
   .flex-1 {
@@ -45,4 +49,28 @@ body {
     .ml-25 {
       margin-left: 25px;
     }
+}
+.float-left {
+  float: left;
+}
+@keyframes slideInUp {
+  0% {
+     opacity: 0;
+     transform: translateY(60px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes slideInUp {
+  0% {
+     opacity: 0;
+     transform: translateY(60px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
 }
