@@ -179,10 +179,10 @@ const Home = () => {
         <div className="section-2">
           <div className="container">
             <ScrollAnimation
-              offset={1200}
+              offset={300}
               animateIn='slideInUp'
-              duration={0.8}
-              delay={600}
+              duration={0.5}
+              delay={100}
               animateOut='slideInUp'
               animateOnce={true}
             >
