@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import 'swiper/css/pagination'
 import '../../assets/scss/homepage/swiper.css'
 import { Mousewheel, Pagination } from 'swiper/modules'
 import Header from "../../components/header/index"
@@ -34,7 +35,6 @@ import Video8 from '../../assets/video/video8-x2-omni.mp4'
 import Video9 from '../../assets/video/video9-x2-omni.mp4'
 import Video10 from '../../assets/video/video10-x2-omni.mp4'
 import videoBanner from '../../assets/video/video-banner.mp4'
-import videoEnd from '../../assets/video/video-end.mp4'
 
 import ImageLogo2 from '../../assets/images/logo/logo-02.png'
 import ImageLogo3 from '../../assets/images/logo/logo-03.png'
@@ -133,47 +133,102 @@ const listData = [
   }
 ]
 
-  const listVideo1 = [
-    {
-      id: 1,
-      title: `Mỏng hơn: thân máy siêu mỏng <span>95</span><i>mm</i>`,
-      videoId: Video1,
-    },
-    {
-      id: 2,
-      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: Video2,
-    },
-    {
-      id: 3,
-      title: "Dài hơn: Bàn chải con lăn dài thêm",
-      videoId: Video3,
-    },
-    {
-      id: 4,
-      title: `Cao hơn<span>15</span><i>mm</i> nâng cây lau nhà`,
-      videoId: Video4,
-    },
-    {
-      id: 5,
-      title: `Mạnh hơn:<span>8000</span> <i>Pa</i> lực hút`,
-      videoId: Video5,
-    },
-    {
-      id: 6,
-      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: Video6,
-    },
-  ]
+const listVideo1 = [
+  {
+    id: 1,
+    title: `Mỏng hơn: Thân máy siêu mỏng <span>95</span><i>mm</i>`,
+    videoId: Video1,
+  },
+  {
+    id: 2,
+    title: `Hẹp hơn: Thân máy siêu hẹp <span>320</span><i>mm</i>`,
+    videoId: Video2,
+  },
+  {
+    id: 3,
+    title: "Rộng hơn: Bàn chải con lăn rộng nhất đến <span>200</span><i>mm</i>",
+    videoId: Video3,
+  },
+  {
+    id: 4,
+    title: `Chặt chẽ hơn: Độ bao phủ góc lên đến <span>99.7</span><i>%</i>`,
+    videoId: Video4,
+  },
+  {
+    id: 5,
+    title: `Cao hơn: Nâng giẻ lau nhà <span>15</span><i>mm</i>`,
+    videoId: Video5,
+  },
+  {
+    id: 6,
+    title: `Mạnh hơn: <span>8000</span><i>Pa</i> lốc xoáy`,
+    videoId: Video6,
+  },
+]
   
 const Home = () => {
-  
+
+  const mapSwiperRef = useRef(null)
+
+  const [isLastSlide, setIsLastSlide] = useState(false)
+  const [isFirstSlide, setIsFirstSlide] = useState(true)
+
+  const handleMapSwiperChange = () => {
+
+    // console.log(mapSwiperRef.current.swiper.activeIndex)
+
+    // if (mapSwiperRef.current) {
+    //   const currentSlideIndex = mapSwiperRef.current.swiper.activeIndex
+    //   if (currentSlideIndex === listVideo1.length - 1) {
+    //     setIsLastSlide(true)
+    //   } else {
+    //     setIsLastSlide(false)
+    //   }
+    // }
+    if (mapSwiperRef.current) {
+      const currentSlideIndex = mapSwiperRef.current.swiper.activeIndex
+      setIsLastSlide(currentSlideIndex === listVideo1.length - 1)
+      setIsFirstSlide(currentSlideIndex === 0)
+    }
+  }
+
+  const handleMouseWheel = (e) => {
+    if (isLastSlide && e.deltaY > 0) {
+      // Khi đạt đến slide cuối cùng và có cuộn chuột xuống
+      window.scrollTo({
+        top: window.scrollY + e.deltaY,
+        behavior: 'smooth',
+      })
+    }
+
+    if (isFirstSlide && e.deltaY < 0) {
+      // Khi ở slide đầu tiên và cuộn chuột lên
+      window.scrollTo({
+        top: window.scrollY + e.deltaY,
+        behavior: 'smooth',
+      })
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('wheel', handleMouseWheel);
+    return () => {
+      window.removeEventListener('wheel', handleMouseWheel);
+    };
+  }, [isLastSlide, isFirstSlide])
+
   return (
     <div className="homepage">
       <Header />
       <div className="list-banner">
         <div className="section-1">
-          <ReactPlayer className="data-video w-100 h-100 " muted={true} playing={true} url={videoBanner} />
+          <ReactPlayer 
+            className="data-video w-100 h-100 " 
+            muted={true} 
+            playing={true} 
+            url={videoBanner} 
+            loop={true}
+          />
         </div>
 
         <div className="section-2">
@@ -231,10 +286,6 @@ const Home = () => {
                 <div className="video-container">
                   <img src={ImageContent} className="w-100" />
                 </div>
-                {/* <div className="content-image">
-                  <h2 className="info-title"> Hơn cả đổi mới, hơn cả đột phá </h2>
-                  <p>Vào tháng 9 năm 2021, Ecovacs đã phát hành dòng DEEBOT X1 với trạm sạc đa năng toàn diện đầu tiên, đem lại trải nghiệm hoàn toàn rảnh tay cho người dùng. Năm nay, thiết kế thân vuông mới, đột phá của Ecovacs đã được ra mắt với chức năng làm sạch góc cạnh, mang đến cho người dùng trải nghiệm làm sạch mạnh mẽ hơn.                </p>
-                </div> */}
               </ScrollAnimation>
             </div>
 
@@ -247,15 +298,20 @@ const Home = () => {
             <div className="box-container">
             <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
             <Swiper
+            ref={mapSwiperRef}
               direction={'vertical'}
               slidesPerView={1}
               spaceBetween={30}
               mousewheel={true}
               pagination={{
                 clickable: true,
+                renderBullet: function (index, className) {
+                return '<span class="' + className + '">' + (index + 1) + '</span>';
+              }
               }}
               modules={[Mousewheel, Pagination]}
               className="mySwiper"
+              onSlideChange={handleMapSwiperChange}
             >
               {
                 listVideo1.map((item) => (
@@ -338,7 +394,7 @@ const Home = () => {
               3D Mapping 2.0 <br />
               Với bản đồ 3D mới được nâng cấp, Deebot X2 Omni sẽ tiến hành dọn dẹp khi bạn chạm vuốt ngón tay tới vị trí cần làm sạch trên ứng dụng Ecovacs Home.
             </p>
-            <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} loop={true} url={videoEnd} />
+            <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} loop={true} url={Video10} />
           </div>
         </div>
 
