@@ -4,11 +4,11 @@ import ReactPlayer from "react-player"
 import Header from "../../components/header/index"
 
 import Slider from "react-slick";
-import Image1 from '../../assets/images/image-1.webp'
-import Image2 from '../../assets/images/image-2.webp'
-import Image3 from '../../assets/images/image-3.webp'
-import Image4 from '../../assets/images/image-4.webp'
-import Image5 from '../../assets/images/image-5.webp'
+import Image1 from '../../assets/images/anh1.jpg'
+import Image2 from '../../assets/images/anh2.jpg'
+import Image3 from '../../assets/images/anh3.jpg'
+import Image4 from '../../assets/images/anh4.jpg'
+import Image5 from '../../assets/images/anh5.jpg'
 
 import ImageSlider1 from '../../assets/images/slider-1.webp'
 import ImageSlider2 from '../../assets/images/slider-2.webp'
@@ -19,13 +19,14 @@ import ImageSlider6 from '../../assets/images/slider-6.webp'
 import ImageSlider7 from '../../assets/images/slider-7.webp'
 import ImageSlider8 from '../../assets/images/slider-8.webp'
 
-import ImageContent from '../../assets/images/image-content.webp'
+import ImageContent from '../../assets/images/anh6.jpg'
 import ImageEcovacsX2 from '../../assets/images/image-ecovacsX2.webp'
 import ImageEcovacX2Black from '../../assets/images/ecovacsX2-black.webp'
 import IconDown from '../../assets/images/icon-down.png'
 import Footer from "../footer"
 import { settingSlider } from "../../utilities/settingSlider"
 import ScrollAnimation from "react-animate-on-scroll"
+import ReactHtmlParser from 'react-html-parser'
 
 const videoBanner = 'https://static.ecovacs.cn/a/2023/x2/assets/kv-8cf77359.mp4'
 const videoEnd = 'https://static.ecovacs.cn/a/2023/x2/assets/9-bd6166d5.mp4'
@@ -110,26 +111,26 @@ const listData = [
   {
     id: 2,
     image: Image2,
-    title: 'Bình tĩnh, giải phóng đôi tay của bạn',
-    description: 'Trạm cơ sở mười môn phối hợp thực sự giải phóng đôi tay1 và tính năng nhận dạng nước thải thông minh mới được bổ sung sẽ kéo nó cho đến khi sạch2'
+    title: 'Sử dụng dễ dàng, trải nghiệm rảnh tay',
+    description: 'Trạm sạc đa năng giúp trải nghiệm dọn dẹp rảnh tay hơn, và tính năng nhận diện nước thải thông minh đã được tích hợp, giúp vắt cho đến khi sạch hoàn toàn'
   },
   {
     id: 3,
     image: Image3,
-    title: 'Thông minh, hơn một bên',
-    description: 'Được trang bị các mẫu Gemini và Ecovacs AINA, nó có thể phản ứng linh hoạt với những thay đổi môi trường năng động'
+    title: 'Thông minh, hơn cả sự mong đợi',
+    description: 'Được trang bị công nghệ Gemini và Ecovacs AINA, robot có thể phản ứng linh hoạt với những thay đổi và các điều kiện môi trường khác nhau.'
   },
   {
     id: 4,
     image: Image4,
-    title: 'nâng cấp, đứng một mình',
-    description: 'Bảy nâng cấp chính của YIKO 2.0, 3D Mapping 2.0 mang lại trải nghiệm tương tác chân thực.'
+    title: 'Công nghệ nâng cấp độc quyền',
+    description: '7 nâng cấp chính của trợ lý giọng nói YIKO 2.0 và công nghệ 3D Mapping 2.0 mang lại trải nghiệm tương tác chân thực.'
   },
   {
     id: 5,
     image: Image5,
-    title: 'Thanh lịch, từ trong ra ngoài',
-    description: 'Sự kết hợp hoàn hảo giữa thẩm mỹ phương Đông và công nghệ hiện đại, được tùy chỉnh cho ngôi nhà cao cấp tối giản.'
+    title: 'Diện mạo thanh lịch từ trong ra ngoài',
+    description: 'Sự kết hợp hoàn hảo giữa phong cách phương Đông và công nghệ hiện đại, phù hợp với những không gian nhà cao cấp nhưng vẫn mang phong cách tối giản.'
 
   }
 ]
@@ -156,7 +157,7 @@ const listInfo = [
   {
     id: 4,
     image: 'https://static.ecovacs.cn/a/2023/x2/assets/icon-video-4e2bf968.png?imageView2/0/format/webp',
-    title: 'trình quản lý video',
+    title: 'Trình quản lý video',
     description: 'Camera Starlight 960P RGB hỗ trợ video thời gian thực và giọng nói hai chiều.'
   }
 ]
@@ -168,30 +169,30 @@ const Home = (props) => {
 
   const topItems = [
     {
-      title: "更薄",
+      title: `Mỏng hơn: thân máy siêu mỏng <span>95</span><i>mm</i>`,
       videoId: 1,
     },
     {
-      title: "更窄：",
+      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
       videoId: 2,
     },
     {
-      title: "更窄：",
+      title: "Dài hơn: Bàn chải con lăn dài thêm",
       videoId: 3,
     },
     {
-      title: "更窄：",
+      title: `Cao hơn<span>15</span><i>mm</i> nâng cây lau nhà`,
       videoId: 4,
     },
     {
-      title: "更窄：",
+      title: `Mạnh hơn:<span>8000</span> <i>Pa</i> lực hút`,
       videoId: 5,
     },
     {
-      title: "更窄：",
+      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
       videoId: 6,
     },
-    // ...
+
   ];
 
 
@@ -202,8 +203,7 @@ const Home = (props) => {
     const newIndex = Math.min(
       Math.floor(newPosition / windowHeight),
       topItems.length - 1
-    ); // Ensure newIndex doesn't exceed topItems length
-
+    ); 
     setScrollPosition(newPosition);
     setActiveIndex(newIndex);
   };
@@ -240,7 +240,7 @@ const Home = (props) => {
                         <img src={item.image} />
                       </div>
                       <h4 className="text-white">{item.title}</h4>
-                      <p className="text-gray">{item.description}</p>
+                      <p className="text-gray">{ReactHtmlParser(item.description)}</p>
                       <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link>
                     </div>
                   )
@@ -277,10 +277,10 @@ const Home = (props) => {
                 <div className="video-container">
                   <img src={ImageContent} className="w-100" />
                 </div>
-                <div className="content-image">
+                {/* <div className="content-image">
                   <h2 className="info-title"> Hơn cả đổi mới, hơn cả đột phá </h2>
                   <p>Vào tháng 9 năm 2021, Ecovacs đã phát hành dòng DEEBOT X1 với trạm sạc đa năng toàn diện đầu tiên, đem lại trải nghiệm hoàn toàn rảnh tay cho người dùng. Năm nay, thiết kế thân vuông mới, đột phá của Ecovacs đã được ra mắt với chức năng làm sạch góc cạnh, mang đến cho người dùng trải nghiệm làm sạch mạnh mẽ hơn.                </p>
-                </div>
+                </div> */}
               </ScrollAnimation>
             </div>
 
@@ -293,15 +293,14 @@ const Home = (props) => {
             <div className="box-container showUp">
               <div className="section-top">
                 <div className="out-box">
+                  <h6 className="mt-4 mb-0">Không còn nỗi lo bụi mịn vô hình.</h6>
                   <div className="box-items" style={{ transform: `translateY(-${activeIndex * 100}%)` }}>
                     {topItems.map((item, index) => (
-
                       <div
                         key={index}
                         className={`top-item ${index === activeIndex ? 'active' : ''}`}
                       >
-
-                        {item.title}
+                        {ReactHtmlParser(item.title)}
                       </div>
                     ))}
                   </div>
@@ -312,7 +311,7 @@ const Home = (props) => {
                   {topItems.map((item, index) => (
                     <div key={index} className={`top-item ${index === activeIndex ? 'active' : ''}`}>
                       {index === activeIndex && (
-                        <ReactPlayer className="active" muted={true} playing={true} url={listVideoContents[item.videoId - 1].url} />
+                        <ReactPlayer className="active-video" width={1200} height={700} muted={true} playing={true} url={listVideoContents[item.videoId - 1].url} />
                       )}
                     </div>
                   ))}
@@ -323,7 +322,7 @@ const Home = (props) => {
         </div>
 
         <div className="section-5">
-          <div className="animate-box">
+          <div className="animate-box" style={{overflow:'initial'}}>
             <h2>Trạm sạc đa năng All-in-one, đem tới trải nghiệm rảnh tay mỗi khi sử dụng</h2>
             <div className="img-pro">
               <img src={ImageEcovacsX2} className='w-100' />
@@ -331,36 +330,51 @@ const Home = (props) => {
           </div>
         </div>
         <div className="section-6">
-          <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} url={videoBanner} />
+          <ScrollAnimation
+            offset={1200}
+            animateIn='slideInUp'
+            duration={0.8}
+            delay={600}
+            animateOut='slideInUp'
+            animateOnce={true}
+          >
+            <div className="container">
+              <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} url={videoBanner} />
+            </div>
+            <ReactPlayer className="data-video w-100" height={1000} muted={true} playing={true} url={videoBanner} />
+          </ScrollAnimation>
         </div>
         <div className="section-7">
-          <div className="animate-box">
-            <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} url={videoBanner} />
-            <div className="video-text">
-            </div>
-          </div>
-          <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} url={videoBanner} />
+
         </div>
+
         <div className="section-8">
-
-          <Slider
-            {...settingSlider}
-
+          <ScrollAnimation
+            offset={1200}
+            animateIn='slideInUp'
+            duration={0.8}
+            delay={600}
+            animateOut='slideInUp'
+            animateOnce={true}
           >
-            {listSlider.map((item, index) => (
-              <div key={index} className="grid-item  float-left mb-5">
-                <img src={item.image} alt={`Image ${index}`} className="img-fluid" />
+            <h2>Trợ lí giọng nói YIKO 2.0 có thể làm được nhiều hơn cho bạn</h2>
+            <Slider
+              {...settingSlider}
+            >
+              {listSlider.map((item, index) => (
+                <div key={index} className="grid-item  float-left mb-5">
+                  <img src={item.image} alt={`Image ${index}`} className="img-fluid" />
 
-                <h5 className="mt-3">{item.title}</h5>
-              </div>
-            ))}
-
-          </Slider>
+                  <h5 className="mt-3">{item.title}</h5>
+                </div>
+              ))}
+            </Slider>
+          </ScrollAnimation>
 
         </div>
         <div className="section-9">
           <div className="container">
-            <h2>Trải nghiệm chân thực, tương tác dọn dẹp mới</h2>
+            <h2>Trải nghiệm dọn dẹp - tương tác chân thực thời đại mới</h2>
             <p>
               3D Mapping 2.0 <br />
               Với bản đồ 3D mới được nâng cấp, Deebot X2 Omni sẽ tiến hành dọn dẹp khi bạn chạm vuốt ngón tay tới vị trí cần làm sạch trên ứng dụng Ecovacs Home.

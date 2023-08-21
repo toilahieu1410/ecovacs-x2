@@ -55,7 +55,7 @@ const Header = () => {
                 <Link to={'#'} className="text-decoration-none text-black">Dịch vụ hỗ trợ</Link>
               </li>
               <li className="menu__item">
-                <Link to={'#'} className="btn buy text-decoration-none text-white">Mua</Link>
+                <Link to={'#'} className="btn buy text-decoration-none text-white">Mua ngay</Link>
               </li>
             </ul>
           </div>
