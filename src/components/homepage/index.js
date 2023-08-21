@@ -171,9 +171,6 @@ const listVideo1 = [
 
 const Home = () => {
 
-  const onSubmit = (data) => {
-    console.log(data)
-  }
   const mapSwiperRef = useRef(null)
 
   const [isLastSlide, setIsLastSlide] = useState(false)
@@ -181,16 +178,6 @@ const Home = () => {
 
   const handleMapSwiperChange = () => {
 
-    // console.log(mapSwiperRef.current.swiper.activeIndex)
-
-    // if (mapSwiperRef.current) {
-    //   const currentSlideIndex = mapSwiperRef.current.swiper.activeIndex
-    //   if (currentSlideIndex === listVideo1.length - 1) {
-    //     setIsLastSlide(true)
-    //   } else {
-    //     setIsLastSlide(false)
-    //   }
-    // }
     if (mapSwiperRef.current) {
       const currentSlideIndex = mapSwiperRef.current.swiper.activeIndex
       setIsLastSlide(currentSlideIndex === listVideo1.length - 1)
@@ -199,16 +186,8 @@ const Home = () => {
   }
 
   const handleMouseWheel = (e) => {
-    if (isLastSlide && e.deltaY > 0) {
-      // Khi đạt đến slide cuối cùng và có cuộn chuột xuống
-      window.scrollTo({
-        top: window.scrollY + e.deltaY,
-        behavior: 'smooth',
-      })
-    }
-
-    if (isFirstSlide && e.deltaY < 0) {
-      // Khi ở slide đầu tiên và cuộn chuột lên
+    if ((isLastSlide && e.deltaY > 0) || (isFirstSlide && e.deltaY < 0)) {
+      e.preventDefault()
       window.scrollTo({
         top: window.scrollY + e.deltaY,
         behavior: 'smooth',
@@ -216,12 +195,12 @@ const Home = () => {
     }
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('wheel', handleMouseWheel);
-  //   return () => {
-  //     window.removeEventListener('wheel', handleMouseWheel);
-  //   }
-  // }, [isLastSlide, isFirstSlide])
+  useEffect(() => {
+    window.addEventListener('wheel', handleMouseWheel, { passive: false })
+    return () => {
+      window.removeEventListener('wheel', handleMouseWheel)
+    }
+  }, [isLastSlide, isFirstSlide])
 
   return (
     <div className="homepage">
@@ -348,22 +327,12 @@ const Home = () => {
           </div>
         </div>
         <div className="section-6">
-          <ScrollAnimation
-            offset={1200}
-            animateIn='slideInUp'
-            duration={0.8}
-            delay={600}
-            animateOut='slideInUp'
-            animateOnce={true}
-          >
-            <div className="container">
+          <div className="container">
               <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} loop={true} url={Video7} />
-            </div>
-            <ReactPlayer className="data-video w-100 mt-5" height={1000} muted={true} playing={true} url={Video8} />
-          </ScrollAnimation>
+          </div>
+          <ReactPlayer className="data-video w-100 mt-5" height={1000} muted={true} playing={true} loop={true} url={Video8} />
         </div>
         <div className="section-7">
-
         </div>
 
         <div className="section-8">
