@@ -51,9 +51,9 @@ const Header = () => {
             </Link>
           </div>
           <div className="menu__item right">
-            <ul className="list-unstyled d-flex mb-0">
+            <ul className="list-unstyled d-flex mb-0 align-items-center">
               <li className="menu__item mr-25">
-                <Link to={'#'} className="text-decoration-none text-black">Hotline</Link>
+                <Link to={'#'} className="text-decoration-none text-black fw-500">Hotline: 0358.071.170</Link>
               </li>
 
               <li className="menu__item">
