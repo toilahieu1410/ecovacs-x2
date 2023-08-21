@@ -169,8 +169,18 @@ const listVideo1 = [
   },
 ]
   
+
 const Home = () => {
 
+  const [modal, setModal] = useState(false)
+
+  const toggleModal = () => setModal(!modal)
+
+  const { register, handleSubmit, formState: { errors } } = useForm({})
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
   const mapSwiperRef = useRef(null)
 
   const [isLastSlide, setIsLastSlide] = useState(false)
@@ -219,23 +229,6 @@ const Home = () => {
       window.removeEventListener('wheel', handleMouseWheel);
     };
   }, [isLastSlide, isFirstSlide])
-    title: `Mạnh hơn:<span>8.000</span><i>Pa</i> Bão hút`,
-    videoId: Video6,
-  },
-]
-
-const Home = () => {
-
-  const [modal, setModal] = useState(false)
-
-  const toggleModal = () => setModal(!modal)
-
-  const { register, handleSubmit, formState: { errors } } = useForm({})
-
-  const onSubmit = (data) => {
-    console.log(data)
-  }
-
   return (
     <div className="homepage">
       <Header />
