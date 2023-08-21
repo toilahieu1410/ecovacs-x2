@@ -167,7 +167,7 @@ const listData = [
   ]
   
 const Home = () => {
-
+  
   return (
     <div className="homepage">
       <Header />
@@ -244,7 +244,8 @@ const Home = () => {
 
         <div className="section-4">
           <div className="animate-box">
-
+            <div className="box-container">
+            <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
             <Swiper
               direction={'vertical'}
               slidesPerView={1}
@@ -259,24 +260,22 @@ const Home = () => {
               {
                 listVideo1.map((item) => (
                   <SwiperSlide>
-                    <div><span>Không còn nỗi lo bụi mịn vô hình.</span></div>
-                    <div>
+                    <div className="top-item d-contents">
                       {ReactHtmlParser(item.title)}
                     </div>
                     <div>
                       <ReactPlayer 
-                        className="active-video" 
-                        width={1200} 
-                        height={700} 
+                        className="active-video w-100 h-100" 
                         muted={true} 
                         playing={true} 
+                        loop={true}
                         url={item.videoId} />
                     </div>
                   </SwiperSlide>
                 ))
               }
             </Swiper>
-
+            </div>
           </div>
         </div>
 

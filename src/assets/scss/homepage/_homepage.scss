@@ -82,9 +82,8 @@
   overflow: hidden;
 }
 .section-4 {
-  height: 400vh;
+  height: 100vh;
   background-color: #fff;
-
   .box-container {
     transition: 1s ease-out;
     transition-delay: 0s;
@@ -96,6 +95,41 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .swiper-slide {
+      display: block;
+
+      .active-video {
+        video {
+          border-radius: 25px;
+        }
+      }
+      .top-item {
+        display: contents;
+        font-size: 40px;
+        height: 65px;
+        transition: all ease-out 0.5s;
+        opacity: 0;
+        transform: translateY(0%);
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        span {
+          padding: 0 0.5208333333vw;
+          font-size: 80px;
+          font-weight: 500;
+          background: -webkit-linear-gradient(left, #7bb4dc, #104e85);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          line-height: 1.2;
+        }
+        i {
+          font-size: 34px;
+          background: -webkit-linear-gradient(left, #7bb4dc, #104e85);
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+          font-weight: 500;
+          font-style: normal;
+        }
+      }
+    }
     .section-top {
       position: relative;
       margin: 00px 10px 50px;
@@ -114,8 +148,7 @@
       display: flex; // Cho phép các phần tử trong section-bottom nằm cạnh nhau
       flex-direction: column; // Hiển thị theo chiều dọc
       align-items: center;
-      .active-video {
-      }
+  
 
     }
   }
@@ -133,31 +166,7 @@
   transition: all ease-out 0.5s;
   font-size: 20px;
 }
-.top-item {
-  font-size: 40px;
-  height: 65px;
-  transition: all ease-out 0.5s;
-  opacity: 0;
-  transform: translateY(0%);
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  span {
-    padding: 0 0.5208333333vw;
-    font-size: 80px;
-    font-weight: 500;
-    background: -webkit-linear-gradient(left, #7bb4dc, #104e85);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.2;
-  }
-  i {
-    font-size: 34px;
-    background: -webkit-linear-gradient(left, #7bb4dc, #104e85);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-weight: 500;
-    font-style: normal;
-  }
-}
+
 
 .top-item.active {
   opacity: 1;
