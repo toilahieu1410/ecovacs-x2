@@ -139,27 +139,27 @@ const listData = [
 const listVideo1 = [
   {
     id: 1,
-    title: `Mỏng hơn: Thân máy siêu mỏng <span>95</span><i>mm</i>`,
+    title: `Mỏng hơn: Robot mỏng nhất chỉ <span>95</span><i>mm</i>`,
     videoId: Video1,
   },
   {
     id: 2,
-    title: `Hẹp hơn: Thân máy siêu hẹp <span>320</span><i>mm</i>`,
+    title: `Gọn hơn: Thân máy gọn chỉ <span>320</span><i>mm</i>`,
     videoId: Video2,
   },
   {
     id: 3,
-    title: "Rộng hơn: Bàn chải con lăn rộng nhất đến <span>200</span><i>mm</i>",
+    title: "Lớn hơn: Chổi chính lớn nhất <span>200</span><i>mm</i>",
     videoId: Video3,
   },
   {
     id: 4,
-    title: `Chặt chẽ hơn: Độ bao phủ góc lên đến <span>99.7</span><i>%</i>`,
+    title: `Sát hơn: Tỷ lệ bao phủ góc cao nhất <span>99.77</span><i>%</i>`,
     videoId: Video4,
   },
   {
     id: 5,
-    title: `Cao hơn: Nâng giẻ lau nhà <span>15</span><i>mm</i>`,
+    title: `Cao hơn: Khả năng nâng thảm lau cao nhất <span>15</span><i>mm</i>`,
     videoId: Video5,
   },
   {
@@ -168,7 +168,7 @@ const listVideo1 = [
     videoId: Video6,
   },
 ]
-  
+
 
 const Home = () => {
 
@@ -223,22 +223,23 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-    window.addEventListener('wheel', handleMouseWheel);
-    return () => {
-      window.removeEventListener('wheel', handleMouseWheel);
-    };
-  }, [isLastSlide, isFirstSlide])
+  // useEffect(() => {
+  //   window.addEventListener('wheel', handleMouseWheel);
+  //   return () => {
+  //     window.removeEventListener('wheel', handleMouseWheel);
+  //   }
+  // }, [isLastSlide, isFirstSlide])
+
   return (
     <div className="homepage">
       <Header />
       <div className="list-banner">
         <div className="section-1">
-          <ReactPlayer 
-            className="data-video w-100 h-100 " 
-            muted={true} 
-            playing={true} 
-            url={videoBanner} 
+          <ReactPlayer
+            className="data-video w-100 h-100 "
+            muted={true}
+            playing={true}
+            url={videoBanner}
             loop={true}
           />
         </div>
@@ -305,41 +306,41 @@ const Home = () => {
         <div className="section-4">
           <div className="animate-box">
             <div className="box-container">
-            <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
-            <Swiper
-            ref={mapSwiperRef}
-              direction={'vertical'}
-              slidesPerView={1}
-              spaceBetween={30}
-              mousewheel={true}
-              pagination={{
-                clickable: true,
-                renderBullet: function (index, className) {
-                return '<span class="' + className + '">' + (index + 1) + '</span>';
-              }
-              }}
-              modules={[Mousewheel, Pagination]}
-              className="mySwiper"
-              onSlideChange={handleMapSwiperChange}
-            >
-              {
-                listVideo1.map((item) => (
-                  <SwiperSlide>
-                    <div className="top-item d-contents">
-                      {ReactHtmlParser(item.title)}
-                    </div>
-                    <div>
-                      <ReactPlayer 
-                        className="active-video w-100 h-100" 
-                        muted={true} 
-                        playing={true} 
-                        loop={true}
-                        url={item.videoId} />
-                    </div>
-                  </SwiperSlide>
-                ))
-              }
-            </Swiper>
+              <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
+              <Swiper
+                ref={mapSwiperRef}
+                direction={'vertical'}
+                slidesPerView={1}
+                spaceBetween={30}
+                mousewheel={true}
+                pagination={{
+                  clickable: true,
+                  renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+                  }
+                }}
+                modules={[Mousewheel, Pagination]}
+                className="mySwiper"
+                onSlideChange={handleMapSwiperChange}
+              >
+                {
+                  listVideo1.map((item) => (
+                    <SwiperSlide>
+                      <div className="top-item d-contents">
+                        {ReactHtmlParser(item.title)}
+                      </div>
+                      <div>
+                        <ReactPlayer
+                          className="active-video w-70 h-100"
+                          muted={true}
+                          playing={true}
+                          loop={true}
+                          url={item.videoId} />
+                      </div>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
             </div>
           </div>
         </div>
@@ -470,78 +471,70 @@ const Home = () => {
               </ul>
             </div>
             <Card>
-          <CardHeader>
-           
-          </CardHeader>
-          <CardBody className='pt-0'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="col-md-12">
-                <div class="row mb-3">
-                 
-                  <div className="col-md-9">
-                    <input
-                      type={"text"}
-                      name="name"
-                      
-                      className="form-control bg-transparent"
-                      placeholder="Nhập họ và tên"
-                      {...register("name", { required: "Không được để trống" })}
-                    />
-                    {errors.name && <p className='text-danger'>Không để trống trường này</p>}
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <input
-                      type={"text"}
-                      name="phone"
-                      className="form-control bg-transparent"
-                      placeholder="Nhập số điện thoại"
-                      {...register("phone", { required: "Không được để trống" })}
-                    />
-                    {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <input
-                      type={"email"}
-                      name="email"
-                      className="form-control bg-transparent"
-                      placeholder="Nhập địa chỉ"
-                      {...register("email")}
-                    />
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <textarea
-                      type={"note"}
-                      name="note"
-                      className="form-control bg-transparent"
-                      placeholder="Ghi chú"
-                      {...register("note")}
-                    >
-              
-                    </textarea>
+              <CardHeader>
 
-                  </div>
-                </div>
-                <div className="d-flex justify-content-center">
-                  <button className="btn btn-primary">
-                    Đặt trước
-                  </button>
-                </div>
-              </div>
-            </form>
-          </CardBody>
-   
-        </Card>
+              </CardHeader>
+              <CardBody className='pt-0'>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="col-md-9" style={{ margin: '0 auto' }}>
+                    <div class="row mb-3">
+                      <input
+                        type={"text"}
+                        name="name"
 
-        
+                        className="form-control bg-transparent"
+                        placeholder="Nhập họ và tên"
+                        {...register("name", { required: "Không được để trống" })}
+                      />
+                      {errors.name && <p className='text-danger'>Không để trống trường này</p>}
+
+                    </div>
+                    <div class="row mb-3">
+                      <input
+                        type={"text"}
+                        name="phone"
+                        className="form-control bg-transparent"
+                        placeholder="Nhập số điện thoại"
+                        {...register("phone", { required: "Không được để trống" })}
+                      />
+                      {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
+
+                    </div>
+                    <div class="row mb-3">
+                      <input
+                        type={"email"}
+                        name="email"
+                        className="form-control bg-transparent"
+                        placeholder="Nhập email"
+                        {...register("email")}
+                      />
+
+
+                    </div>
+                    <div class="row mb-3">
+                      <textarea
+                        type={"note"}
+                        name="note"
+                        className="form-control bg-transparent"
+                        placeholder="Ghi chú"
+                        {...register("note")}
+                      >
+
+                      </textarea>
+
+                    </div>
+                    <div className="d-flex justify-content-center">
+                      <button className="btn btn-primary">
+                        Đặt trước
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </CardBody>
+
+            </Card>
+
+
             <div className="line-middle"></div>
           </div>
           <ModalBuyNow modal={modal} toggleModal={toggleModal} />
