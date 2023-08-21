@@ -328,6 +328,9 @@
   color: rgb(255, 255, 255);
   text-align: center;
   padding-top: 100px;
+  .card {
+    background-color: transparent;
+  }
   form {
     input.form-control {
       border-color: #cccccc5e;

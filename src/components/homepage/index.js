@@ -423,7 +423,7 @@ const Home = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
               <div className="col-md-12">
                 <div class="row mb-3">
-                  <label className="col-form-label col-md-3 text-right">Họ và tên</label>
+                 
                   <div className="col-md-9">
                     <input
                       type={"text"}
@@ -437,7 +437,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label className="col-form-label col-md-3 text-right">Số điện thoại</label>
+                  
                   <div className="col-md-9">
                     <input
                       type={"text"}
@@ -450,7 +450,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label className="col-form-label col-md-3 text-right">Email</label>
+                  
                   <div className="col-md-9">
                     <input
                       type={"email"}
@@ -462,7 +462,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label className="col-form-label col-md-3 text-right">Ghi chú</label>
+                  
                   <div className="col-md-9">
                     <textarea
                       type={"note"}
