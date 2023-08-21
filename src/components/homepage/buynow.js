@@ -28,11 +28,9 @@ const ModalBuyNow = () => {
     <Card>
       <CardBody className='pt-0'>
       <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="col-md-12">
-            <div class="row mb-3">
-            
-              <div className="col-md-9">
-                <input
+              <div className="col-md-9" style={{margin: '0 auto'}}>
+              <div className="row mb-3">
+              <input
                   type={"text"}
                   name="name"
                   
@@ -42,11 +40,8 @@ const ModalBuyNow = () => {
                 />
                 {errors.name && <p className='text-danger'>Không để trống trường này</p>}
               </div>
-            </div>
-            <div class="row mb-3">
-              
-              <div className="col-md-9">
-                <input
+              <div className="row mb-3">
+              <input
                   type={"text"}
                   name="phone"
                   className="form-control bg-transparent"
@@ -55,11 +50,8 @@ const ModalBuyNow = () => {
                 />
                 {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
               </div>
-            </div>
-            <div class="row mb-3">
-              
-              <div className="col-md-9">
-                <input
+              <div className="row mb-3">
+              <input
                   type={"email"}
                   name="email"
                   className="form-control bg-transparent"
@@ -67,11 +59,8 @@ const ModalBuyNow = () => {
                   {...register("email")}
                 />
               </div>
-            </div>
-            <div class="row mb-3">
-              
-              <div className="col-md-9">
-                <textarea
+              <div className="row mb-3">
+              <textarea
                   type={"note"}
                   name="note"
                   className="form-control bg-transparent"
@@ -80,15 +69,13 @@ const ModalBuyNow = () => {
                 >
           
                 </textarea>
-
               </div>
-            </div>
+              </div>
             <div className="d-flex justify-content-center">
               <button className="btn btn-primary">
                 Đặt trước
               </button>
             </div>
-          </div>
         </form>
       </CardBody>
       <ToastContainer autoClose={2000} />

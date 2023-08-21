@@ -324,7 +324,7 @@ const Home = () => {
                       </div>
                       <div>
                         <ReactPlayer
-                          className="active-video w-70 h-100"
+                          className="active-video w-60 h-100"
                           muted={true}
                           playing={true}
                           loop={true}

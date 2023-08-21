@@ -333,17 +333,26 @@
   }
   form {
     input.form-control {
-      border-color: #cccccc5e;
       border: transparent;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #cccccc5e;
+      color: #fff;
+      border-radius: 0;
+      &:focus {
+        box-shadow: none;
+      }
       &::placeholder {
         color: #ccc;
       }
     }
     textarea {
-      border-color: #cccccc5e;
       border: transparent;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid #cccccc5e;
+      color: #fff;
+      border-radius: 0;
+      &:focus {
+        box-shadow: none;
+        color: #fff;
+      }
       &::placeholder {
         color: #ccc;
       }
