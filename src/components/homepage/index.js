@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { useForm } from "react-hook-form"
 import ReactPlayer from "react-player"
-import { Card, CardTitle, CardHeader, CardBody } from 'reactstrap'
+import { Card, CardBody } from 'reactstrap'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -171,12 +170,6 @@ const listVideo1 = [
   
 
 const Home = () => {
-
-  const [modal, setModal] = useState(false)
-
-  const toggleModal = () => setModal(!modal)
-
-  const { register, handleSubmit, formState: { errors } } = useForm({})
 
   const onSubmit = (data) => {
     console.log(data)
@@ -412,7 +405,7 @@ const Home = () => {
               <h2>X2 Omni</h2>
               <div className="deebot-image">
                 <img src={ImageEcovacX2Black} className='d-block' />
-                <Link to={'#'} className='btn buy mt-4' onClick={toggleModal}>
+                <Link className='btn buy mt-4'>
                   <span>Đặt bây giờ</span>
                 </Link>
               </div>
@@ -469,82 +462,9 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-            <Card>
-          <CardHeader>
-           
-          </CardHeader>
-          <CardBody className='pt-0'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="col-md-12">
-                <div class="row mb-3">
-                 
-                  <div className="col-md-9">
-                    <input
-                      type={"text"}
-                      name="name"
-                      
-                      className="form-control bg-transparent"
-                      placeholder="Nhập họ và tên"
-                      {...register("name", { required: "Không được để trống" })}
-                    />
-                    {errors.name && <p className='text-danger'>Không để trống trường này</p>}
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <input
-                      type={"text"}
-                      name="phone"
-                      className="form-control bg-transparent"
-                      placeholder="Nhập số điện thoại"
-                      {...register("phone", { required: "Không được để trống" })}
-                    />
-                    {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <input
-                      type={"email"}
-                      name="email"
-                      className="form-control bg-transparent"
-                      placeholder="Nhập địa chỉ"
-                      {...register("email")}
-                    />
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  
-                  <div className="col-md-9">
-                    <textarea
-                      type={"note"}
-                      name="note"
-                      className="form-control bg-transparent"
-                      placeholder="Ghi chú"
-                      {...register("note")}
-                    >
-              
-                    </textarea>
-
-                  </div>
-                </div>
-                <div className="d-flex justify-content-center">
-                  <button className="btn btn-primary">
-                    Đặt trước
-                  </button>
-                </div>
-              </div>
-            </form>
-          </CardBody>
-   
-        </Card>
-
-        
+            <ModalBuyNow/>
             <div className="line-middle"></div>
           </div>
-          <ModalBuyNow modal={modal} toggleModal={toggleModal} />
         </div>
       </div>
       <Footer />
