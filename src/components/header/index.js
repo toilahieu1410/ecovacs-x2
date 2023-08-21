@@ -41,7 +41,7 @@ const Header = () => {
           <div className="menu__item left">
             <ul className="list-unstyled d-flex mb-0">
               <li className="menu__item ">
-                <Link to={'#'} className="text-decoration-none text-black " >ECOVACS DEEBOT X2</Link>
+                <Link to={'#'} className="text-decoration-none text-black " >ECOVACS DEEBOT X2 OMNI</Link>
               </li>
             </ul>
           </div>
@@ -53,11 +53,9 @@ const Header = () => {
           <div className="menu__item right">
             <ul className="list-unstyled d-flex mb-0">
               <li className="menu__item mr-25">
-                <Link to={'#'} className="text-decoration-none text-black">Tổng quan</Link>
+                <Link to={'#'} className="text-decoration-none text-black">Hotline</Link>
               </li>
-              <li className="menu__item mr-25">
-                <Link to={'#'} className="text-decoration-none text-black">Dịch vụ hỗ trợ</Link>
-              </li>
+
               <li className="menu__item">
                 <Link to={'#'} className="btn buy text-decoration-none text-white" onClick={toggleModal}>Mua ngay</Link>
               </li>
@@ -65,24 +63,10 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <ModalBuyNow modal={modal} setModal={setModal} toggleModal={toggleModal}/>
+      
     </header>
   )
 }
 
 export default Header
 
-const ModalBuyNow = (props) => {
-
-  const {modal, setModal, toggleModal} = props
-  return (
-    <Modal isOpen={modal} toggle={toggleModal} size='lg' centered>
-      <ModalHeader>
-        <label className="fw-normal">Thông tin mua hàng</label>
-      </ModalHeader>
-      <ModalBody>
-        <img src={QRcodeGiga} className='w-100'/>
-      </ModalBody>
-    </Modal>
-  )
-}
