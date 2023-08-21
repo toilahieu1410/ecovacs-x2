@@ -195,12 +195,12 @@ const Home = () => {
     }
   }
 
-  useEffect(() => {
-    window.addEventListener('wheel', handleMouseWheel, { passive: false })
-    return () => {
-      window.removeEventListener('wheel', handleMouseWheel)
-    }
-  }, [isLastSlide, isFirstSlide])
+  // useEffect(() => {
+  //   window.addEventListener('wheel', handleMouseWheel, { passive: false })
+  //   return () => {
+  //     window.removeEventListener('wheel', handleMouseWheel)
+  //   }
+  // }, [isLastSlide, isFirstSlide])
 
   return (
     <div className="homepage">
@@ -234,7 +234,7 @@ const Home = () => {
                       </div>
                       <h4 className="text-white">{item.title}</h4>
                       <p className="text-gray">{ReactHtmlParser(item.description)}</p>
-                      <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link>
+                      {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
                     </div>
                   )
                 ))}
@@ -248,7 +248,7 @@ const Home = () => {
                       </div>
                       <h4 className="text-white">{item.title}</h4>
                       <p className="text-gray">{item.description}</p>
-                      <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link>
+                      {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
                     </div>
                   )
                 ))}
@@ -303,7 +303,7 @@ const Home = () => {
                       </div>
                       <div>
                         <ReactPlayer
-                          className="active-video w-70 h-100"
+                          className="active-video w-60 h-100"
                           muted={true}
                           playing={true}
                           loop={true}
@@ -375,9 +375,8 @@ const Home = () => {
               <h2>X2 Omni</h2>
               <div className="deebot-image">
                 <img src={ImageEcovacX2Black} className='d-block' />
-                <Link className='btn buy mt-4'>
-                  <span>Đặt bây giờ</span>
-                </Link>
+                <p className="btn buy mt-4">Đặt bây giờ <i className="fa fa-chevron-down ml-5"></i></p>
+          
               </div>
             </div>
 
