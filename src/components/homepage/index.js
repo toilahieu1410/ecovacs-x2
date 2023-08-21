@@ -195,12 +195,12 @@ const Home = () => {
     }
   }
 
-  // useEffect(() => {
-  //   window.addEventListener('wheel', handleMouseWheel, { passive: false })
-  //   return () => {
-  //     window.removeEventListener('wheel', handleMouseWheel)
-  //   }
-  // }, [isLastSlide, isFirstSlide])
+  useEffect(() => {
+    window.addEventListener('wheel', handleMouseWheel, { passive: false })
+    return () => {
+      window.removeEventListener('wheel', handleMouseWheel)
+    }
+  }, [isLastSlide, isFirstSlide])
 
   return (
     <div className="homepage">
