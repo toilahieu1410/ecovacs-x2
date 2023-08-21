@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import ReactPlayer from "react-player"
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import '../../assets/scss/homepage/swiper.css'
+import { Mousewheel, Pagination } from 'swiper/modules'
 import Header from "../../components/header/index"
 
 import Slider from "react-slick";
@@ -19,6 +23,19 @@ import ImageSlider6 from '../../assets/images/slider-6.webp'
 import ImageSlider7 from '../../assets/images/slider-7.webp'
 import ImageSlider8 from '../../assets/images/slider-8.webp'
 
+import Video1 from '../../assets/video/video1-x2-omni.mp4'
+import Video2 from '../../assets/video/video2-x2-omni.mp4'
+import Video3 from '../../assets/video/video3-x2-omni.mp4'
+import Video4 from '../../assets/video/video4-x2-omni.mp4'
+import Video5 from '../../assets/video/video5-x2-omni.mp4'
+import Video6 from '../../assets/video/video6-x2-omni.mp4'
+import Video7 from '../../assets/video/video7-x2-omni.mp4'
+import Video8 from '../../assets/video/video8-x2-omni.mp4'
+import Video9 from '../../assets/video/video9-x2-omni.mp4'
+import Video10 from '../../assets/video/video10-x2-omni.mp4'
+import videoBanner from '../../assets/video/video-banner.mp4'
+import videoEnd from '../../assets/video/video-end.mp4'
+
 import ImageContent from '../../assets/images/anh6.jpg'
 import ImageEcovacsX2 from '../../assets/images/image-ecovacsX2.webp'
 import ImageEcovacX2Black from '../../assets/images/ecovacsX2-black.webp'
@@ -27,10 +44,6 @@ import Footer from "../footer"
 import { settingSlider } from "../../utilities/settingSlider"
 import ScrollAnimation from "react-animate-on-scroll"
 import ReactHtmlParser from 'react-html-parser'
-
-const videoBanner = 'https://static.ecovacs.cn/a/2023/x2/assets/kv-8cf77359.mp4'
-const videoEnd = 'https://static.ecovacs.cn/a/2023/x2/assets/9-bd6166d5.mp4'
-
 
 const listSlider = [
   {
@@ -74,33 +87,7 @@ const listSlider = [
     title: ' Luôn phản hồi và hỗ trợ bạn kịp thời ngay cả khi đang offline, hay mất kết nối mạng'
   },
 ]
-const listVideoContents = [
-  {
-    id: 1,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/1-392538a6.mp4'
-  },
-  {
-    id: 2,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/6-266e754f.mp4'
-  },
-  {
-    id: 3,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/5-69c29c22.mp4'
-  },
-  {
-    id: 4,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/4-5f270793.mp4'
-  },
-  {
-    id: 5,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/3-31197729.mp4'
-  },
-  {
-    id: 6,
-    url: 'https://static.ecovacs.cn/a/2023/x2/assets/2-49f7eb78.mp4'
-  },
 
-]
 const listData = [
   {
     id: 1,
@@ -161,58 +148,41 @@ const listInfo = [
     description: 'Camera Starlight 960P RGB hỗ trợ video thời gian thực và giọng nói hai chiều.'
   }
 ]
-const Home = (props) => {
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-
-  const topItems = [
+  const listVideo1 = [
     {
+      id: 1,
       title: `Mỏng hơn: thân máy siêu mỏng <span>95</span><i>mm</i>`,
-      videoId: 1,
+      videoId: Video1,
     },
     {
+      id: 2,
       title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: 2,
+      videoId: Video2,
     },
     {
+      id: 3,
       title: "Dài hơn: Bàn chải con lăn dài thêm",
-      videoId: 3,
+      videoId: Video3,
     },
     {
+      id: 4,
       title: `Cao hơn<span>15</span><i>mm</i> nâng cây lau nhà`,
-      videoId: 4,
+      videoId: Video4,
     },
     {
+      id: 5,
       title: `Mạnh hơn:<span>8000</span> <i>Pa</i> lực hút`,
-      videoId: 5,
+      videoId: Video5,
     },
     {
+      id: 6,
       title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: 6,
+      videoId: Video6,
     },
+  ]
 
-  ];
-
-
-
-  const handleScroll = () => {
-    const windowHeight = window.innerHeight;
-    const newPosition = window.scrollY;
-    const newIndex = Math.min(
-      Math.floor(newPosition / windowHeight),
-      topItems.length - 1
-    ); 
-    setScrollPosition(newPosition);
-    setActiveIndex(newIndex);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const Home = () => {
 
   return (
     <div className="homepage">
@@ -290,34 +260,39 @@ const Home = (props) => {
 
         <div className="section-4">
           <div className="animate-box">
-            <div className="box-container showUp">
-              <div className="section-top">
-                <div className="out-box">
-                  <h6 className="mt-4 mb-0">Không còn nỗi lo bụi mịn vô hình.</h6>
-                  <div className="box-items" style={{ transform: `translateY(-${activeIndex * 100}%)` }}>
-                    {topItems.map((item, index) => (
-                      <div
-                        key={index}
-                        className={`top-item ${index === activeIndex ? 'active' : ''}`}
-                      >
-                        {ReactHtmlParser(item.title)}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="section-bottom">
-                <div className="box-items" style={{ transform: `translateY(-${activeIndex * 100}%)` }}>
-                  {topItems.map((item, index) => (
-                    <div key={index} className={`top-item ${index === activeIndex ? 'active' : ''}`}>
-                      {index === activeIndex && (
-                        <ReactPlayer className="active-video" width={1200} height={700} muted={true} playing={true} url={listVideoContents[item.videoId - 1].url} />
-                      )}
+
+            <Swiper
+              direction={'vertical'}
+              slidesPerView={1}
+              spaceBetween={30}
+              mousewheel={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Mousewheel, Pagination]}
+              className="mySwiper"
+            >
+              {
+                listVideo1.map((item) => (
+                  <SwiperSlide>
+                    <div><span>Không còn nỗi lo bụi mịn vô hình.</span></div>
+                    <div>
+                      {ReactHtmlParser(item.title)}
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+                    <div>
+                      <ReactPlayer 
+                        className="active-video" 
+                        width={1200} 
+                        height={700} 
+                        muted={true} 
+                        playing={true} 
+                        url={item.videoId} />
+                    </div>
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+
           </div>
         </div>
 
