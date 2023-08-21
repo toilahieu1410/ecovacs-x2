@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useForm } from "react-hook-form"
 import ReactPlayer from "react-player"
+import { Card, CardTitle, CardHeader, CardBody } from 'reactstrap'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import '../../assets/scss/homepage/swiper.css'
@@ -14,25 +16,25 @@ import Image3 from '../../assets/images/anh3.jpg'
 import Image4 from '../../assets/images/anh4.jpg'
 import Image5 from '../../assets/images/anh5.jpg'
 
-import ImageSlider1 from '../../assets/images/slider-1.webp'
-import ImageSlider2 from '../../assets/images/slider-2.webp'
-import ImageSlider3 from '../../assets/images/slider-3.webp'
-import ImageSlider4 from '../../assets/images/slider-4.webp'
-import ImageSlider5 from '../../assets/images/slider-5.webp'
-import ImageSlider6 from '../../assets/images/slider-6.webp'
-import ImageSlider7 from '../../assets/images/slider-7.webp'
-import ImageSlider8 from '../../assets/images/slider-8.webp'
+import ImageSlider1 from '../../assets/images/anh9.jpg'
+import ImageSlider2 from '../../assets/images/anh10.jpg'
+import ImageSlider3 from '../../assets/images/anh11.jpg'
+import ImageSlider4 from '../../assets/images/anh12.jpg'
+import ImageSlider5 from '../../assets/images/anh14.jpg'
+import ImageSlider6 from '../../assets/images/anh15.jpg'
+import ImageSlider7 from '../../assets/images/anh13.gif'
+import ImageSlider8 from '../../assets/images/anh16.jpg'
 
-import Video1 from '../../assets/video/video1-x2-omni.mp4'
+import Video1 from '../../assets/video/video-1.mp4'
 import Video2 from '../../assets/video/video2-x2-omni.mp4'
 import Video3 from '../../assets/video/video3-x2-omni.mp4'
-import Video4 from '../../assets/video/video4-x2-omni.mp4'
-import Video5 from '../../assets/video/video5-x2-omni.mp4'
-import Video6 from '../../assets/video/video6-x2-omni.mp4'
-import Video7 from '../../assets/video/video7-x2-omni.mp4'
-import Video8 from '../../assets/video/video8-x2-omni.mp4'
-import Video9 from '../../assets/video/video9-x2-omni.mp4'
-import Video10 from '../../assets/video/video10-x2-omni.mp4'
+import Video4 from '../../assets/video/video-4.mp4'
+import Video5 from '../../assets/video/video-5.mp4'
+import Video6 from '../../assets/video/video-6.mp4'
+import Video7 from '../../assets/video/video-7.mp4'
+import Video8 from '../../assets/video/video-8.mp4'
+import Video9 from '../../assets/video/video-9.mp4'
+import Video10 from '../../assets/video/video-10.mp4'
 import videoBanner from '../../assets/video/video-banner.mp4'
 import videoEnd from '../../assets/video/video-end.mp4'
 
@@ -55,6 +57,7 @@ import Footer from "../footer"
 import { settingSlider } from "../../utilities/settingSlider"
 import ScrollAnimation from "react-animate-on-scroll"
 import ReactHtmlParser from 'react-html-parser'
+import ModalBuyNow from "./buynow"
 
 const listSlider = [
   {
@@ -133,41 +136,52 @@ const listData = [
   }
 ]
 
-  const listVideo1 = [
-    {
-      id: 1,
-      title: `Mỏng hơn: thân máy siêu mỏng <span>95</span><i>mm</i>`,
-      videoId: Video1,
-    },
-    {
-      id: 2,
-      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: Video2,
-    },
-    {
-      id: 3,
-      title: "Dài hơn: Bàn chải con lăn dài thêm",
-      videoId: Video3,
-    },
-    {
-      id: 4,
-      title: `Cao hơn<span>15</span><i>mm</i> nâng cây lau nhà`,
-      videoId: Video4,
-    },
-    {
-      id: 5,
-      title: `Mạnh hơn:<span>8000</span> <i>Pa</i> lực hút`,
-      videoId: Video5,
-    },
-    {
-      id: 6,
-      title: `Hẹp hơn: thân máy siêu hẹp <span>320</span><i>mm</i>`,
-      videoId: Video6,
-    },
-  ]
-  
+const listVideo1 = [
+  {
+    id: 1,
+    title: `Mỏng hơn: thân máy siêu mỏng <span>95</span><i>mm</i>`,
+    videoId: Video1,
+  },
+  {
+    id: 2,
+    title: `Thu hẹp hơn <span>320</span> thân máy siêu hẹp`,
+    videoId: Video2,
+  },
+  {
+    id: 3,
+    title: "Lâu hơn:<span>200</span> bàn chải con lăn dài",
+    videoId: Video3,
+  },
+  {
+    id: 4,
+    title: `Nhiều nhãn dán hơn: độ phủ sạch`,
+    videoId: Video4,
+  },
+  {
+    id: 5,
+    title: `Cao hơn: Nâng cây lau nhà <span>15</span><i>mm</i>`,
+    videoId: Video5,
+  },
+  {
+    id: 6,
+    title: `Mạnh hơn:<span>8.000</span><i>Pa</i> Bão hút`,
+    videoId: Video6,
+  },
+]
+
 const Home = () => {
-  
+
+  const [modal, setModal] = useState(false)
+
+  const toggleModal = () => setModal(!modal)
+
+  const { register, handleSubmit, formState: { errors } } = useForm({})
+
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
+
   return (
     <div className="homepage">
       <Header />
@@ -175,7 +189,6 @@ const Home = () => {
         <div className="section-1">
           <ReactPlayer className="data-video w-100 h-100 " muted={true} playing={true} url={videoBanner} />
         </div>
-
         <div className="section-2">
           <div className="container">
             <ScrollAnimation
@@ -237,44 +250,42 @@ const Home = () => {
                 </div> */}
               </ScrollAnimation>
             </div>
-
-
           </div>
         </div>
 
         <div className="section-4">
           <div className="animate-box">
             <div className="box-container">
-            <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
-            <Swiper
-              direction={'vertical'}
-              slidesPerView={1}
-              spaceBetween={30}
-              mousewheel={true}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[Mousewheel, Pagination]}
-              className="mySwiper"
-            >
-              {
-                listVideo1.map((item) => (
-                  <SwiperSlide>
-                    <div className="top-item d-contents">
-                      {ReactHtmlParser(item.title)}
-                    </div>
-                    <div>
-                      <ReactPlayer 
-                        className="active-video w-100 h-100" 
-                        muted={true} 
-                        playing={true} 
-                        loop={true}
-                        url={item.videoId} />
-                    </div>
-                  </SwiperSlide>
-                ))
-              }
-            </Swiper>
+              <h4 className="mt-4">Không còn nỗi lo bụi mịn vô hình.</h4>
+              <Swiper
+                direction={'vertical'}
+                slidesPerView={1}
+                spaceBetween={30}
+                mousewheel={true}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[Mousewheel, Pagination]}
+                className="mySwiper"
+              >
+                {
+                  listVideo1.map((item) => (
+                    <SwiperSlide>
+                      <div className="top-item d-contents">
+                        {ReactHtmlParser(item.title)}
+                      </div>
+                      <div>
+                        <ReactPlayer
+                          className="active-video w-100 h-100"
+                          muted={true}
+                          playing={true}
+                          loop={true}
+                          url={item.videoId} />
+                      </div>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
             </div>
           </div>
         </div>
@@ -298,9 +309,9 @@ const Home = () => {
             animateOnce={true}
           >
             <div className="container">
-              <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} url={videoBanner} />
+              <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} loop={true} url={Video7} />
             </div>
-            <ReactPlayer className="data-video w-100" height={1000} muted={true} playing={true} url={videoBanner} />
+            <ReactPlayer className="data-video w-100 mt-5" height={1000} muted={true} playing={true} url={Video8} />
           </ScrollAnimation>
         </div>
         <div className="section-7">
@@ -322,8 +333,7 @@ const Home = () => {
             >
               {listSlider.map((item, index) => (
                 <div key={index} className="grid-item  float-left mb-5">
-                  <img src={item.image} alt={`Image ${index}`} className="img-fluid" />
-
+                  <img src={item.image} alt={`Image ${index + 1}`} className="img-fluid" />
                   <h5 className="mt-3">{item.title}</h5>
                 </div>
               ))}
@@ -346,10 +356,9 @@ const Home = () => {
           <div className="container">
             <div className="x2-omni">
               <h2>X2 Omni</h2>
-
               <div className="deebot-image">
                 <img src={ImageEcovacX2Black} className='d-block' />
-                <Link to={'#'} className='btn buy mt-4'>
+                <Link to={'#'} className='btn buy mt-4' onClick={toggleModal}>
                   <span>Đặt bây giờ</span>
                 </Link>
               </div>
@@ -358,13 +367,14 @@ const Home = () => {
             <div className="list-contact mt-4">
               <ul className="list-unstyled d-flex align-items-center justify-content-around">
                 <li>
-                <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
+                  <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
                     <img src={ImageLogoGiga} className="img-fluid" width={200} />
                   </a>
                 </li>
                 <li>
-                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
-                    <img src={ImageLogo2} className="img-fluid " width={200} />
+                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
+                    <img src={ImageLogo4} className="img-fluid" width={200} />
+
                   </a>
                 </li>
                 <li>
@@ -373,23 +383,24 @@ const Home = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
-                    <img src={ImageLogo4} className="img-fluid" width={200} />
-                   
+                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
+                    <img src={ImageLogo2} className="img-fluid " width={200} />
                   </a>
                 </li>
+
               </ul>
             </div>
             <div className="list-qrcode mt-4">
               <ul className="list-unstyled d-flex align-items-center justify-content-around">
                 <li>
-                <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
+                  <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
                     <img src={ImageQRCodeGiga} className="img-fluid" width={150} />
                   </a>
                 </li>
                 <li>
-                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
-                    <img src={ImageQRCode2} className="img-fluid" width={150} />
+                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
+                    <img src={ImageQRCode4} className="img-fluid" width={150} />
+
                   </a>
                 </li>
                 <li>
@@ -398,15 +409,88 @@ const Home = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
-                    <img src={ImageQRCode4} className="img-fluid" width={150} />
-                   
+                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
+                    <img src={ImageQRCode2} className="img-fluid" width={150} />
                   </a>
                 </li>
               </ul>
             </div>
+            <Card>
+          <CardHeader>
+           
+          </CardHeader>
+          <CardBody className='pt-0'>
+          <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="col-md-12">
+                <div class="row mb-3">
+                  <label className="col-form-label col-md-3 text-right">Họ và tên</label>
+                  <div className="col-md-9">
+                    <input
+                      type={"text"}
+                      name="name"
+                      
+                      className="form-control bg-transparent"
+                      placeholder="Nhập họ và tên"
+                      {...register("name", { required: "Không được để trống" })}
+                    />
+                    {errors.name && <p className='text-danger'>Không để trống trường này</p>}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label className="col-form-label col-md-3 text-right">Số điện thoại</label>
+                  <div className="col-md-9">
+                    <input
+                      type={"text"}
+                      name="phone"
+                      className="form-control bg-transparent"
+                      placeholder="Nhập số điện thoại"
+                      {...register("phone", { required: "Không được để trống" })}
+                    />
+                    {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label className="col-form-label col-md-3 text-right">Email</label>
+                  <div className="col-md-9">
+                    <input
+                      type={"email"}
+                      name="email"
+                      className="form-control bg-transparent"
+                      placeholder="Nhập địa chỉ"
+                      {...register("email")}
+                    />
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label className="col-form-label col-md-3 text-right">Ghi chú</label>
+                  <div className="col-md-9">
+                    <textarea
+                      type={"note"}
+                      name="note"
+                      className="form-control bg-transparent"
+                      placeholder="Ghi chú"
+                      {...register("note")}
+                    >
+              
+                    </textarea>
+
+                  </div>
+                </div>
+                <div className="d-flex justify-content-center">
+                  <button className="btn btn-primary">
+                    Đặt trước
+                  </button>
+                </div>
+              </div>
+            </form>
+          </CardBody>
+   
+        </Card>
+
+        
             <div className="line-middle"></div>
           </div>
+          <ModalBuyNow modal={modal} toggleModal={toggleModal} />
         </div>
       </div>
       <Footer />
