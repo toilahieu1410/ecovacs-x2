@@ -328,6 +328,30 @@
   color: rgb(255, 255, 255);
   text-align: center;
   padding-top: 100px;
+  .card {
+    background-color: transparent;
+  }
+  form {
+    input.form-control {
+      border-color: #cccccc5e;
+      border: transparent;
+      border-bottom: 1px solid;
+      &::placeholder {
+        color: #ccc;
+      }
+    }
+    textarea {
+      border-color: #cccccc5e;
+      border: transparent;
+      border-bottom: 1px solid;
+      &::placeholder {
+        color: #ccc;
+      }
+      &::-webkit-input-placeholder {
+        color: #ccc;
+     }
+    }
+  }
   h2 {
     font-size: 45px;
     font-weight: 500;

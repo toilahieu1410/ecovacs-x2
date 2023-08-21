@@ -20,6 +20,19 @@
     left: 0;
     transition: all 0.3s ease;
   }
+  .menu__item.left {
+    ul {
+      li {
+        a.text-black {
+          font-weight: 500;
+          background: -webkit-linear-gradient(left, #7bb4dc, #104e85);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          font-size: 18px;
+        }
+      }
+    }
+  }
   .menu__item.right {
     .menu__item {
       .buy {
