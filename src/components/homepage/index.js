@@ -19,6 +19,18 @@ import ImageSlider6 from '../../assets/images/slider-6.webp'
 import ImageSlider7 from '../../assets/images/slider-7.webp'
 import ImageSlider8 from '../../assets/images/slider-8.webp'
 
+import ImageLogo2 from '../../assets/images/logo/logo-02.png'
+import ImageLogo3 from '../../assets/images/logo/logo-03.png'
+import ImageLogo4 from '../../assets/images/logo/logo-04.png'
+import ImageLogoGiga from '../../assets/images/logo/logo-giga.png'
+
+import ImageQRCode2 from '../../assets/images/logo/qrcode-2.svg'
+import ImageQRCode3 from '../../assets/images/logo/qrcode-3.svg'
+import ImageQRCode4 from '../../assets/images/logo/qrcode-4.svg'
+import ImageQRCodeGiga from '../../assets/images/logo/qrcode-1.svg'
+
+
+import ImageThongSo from '../../assets/images/thong-so.webp'
 import ImageContent from '../../assets/images/anh6.jpg'
 import ImageEcovacsX2 from '../../assets/images/image-ecovacsX2.webp'
 import ImageEcovacX2Black from '../../assets/images/ecovacsX2-black.webp'
@@ -135,37 +147,17 @@ const listData = [
   }
 ]
 
-const listInfo = [
-  {
-    id: 1,
-    image: 'https://static.ecovacs.cn/a/2023/x2/assets/icon-7500-286d8d24.png?imageView2/0/format/webp',
-    title: 'Lực hút lớn 7500Pa',
-    description: 'Các hạt lớn với lực hút bão cũng không phải lo lắng'
-  },
-  {
-    id: 2,
-    image: 'https://static.ecovacs.cn/a/2023/x2/assets/icon-22-dbcc98e0.png?imageView2/0/format/webp',
-    title: 'Lực lượng vượt chướng ngại vật 22mm',
-    description: 'Việc sử dụng các bánh dẫn động mới được bổ sung lực truyền động mạnh mẽ cho phép lên xuống và xuống dưới'
-  },
-  {
-    id: 3,
-    image: 'https://static.ecovacs.cn/a/2023/x2/assets/icon-battery-6135b59a.png?imageView2/0/format/webp',
-    title: 'Tuổi thọ pin mạnh mẽ 6400mAh',
-    description: 'Lên đến 210 phút, có thể quét và lau sàn phẳng rộng 200 mét vuông cùng một lúc '
-  },
-  {
-    id: 4,
-    image: 'https://static.ecovacs.cn/a/2023/x2/assets/icon-video-4e2bf968.png?imageView2/0/format/webp',
-    title: 'Trình quản lý video',
-    description: 'Camera Starlight 960P RGB hỗ trợ video thời gian thực và giọng nói hai chiều.'
-  }
-]
+
 const Home = (props) => {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const [modal, setModal] = useState(false)
+
+  const toggleModal = () => {
+    setModal(!modal)
+  }
 
   const topItems = [
     {
@@ -203,7 +195,7 @@ const Home = (props) => {
     const newIndex = Math.min(
       Math.floor(newPosition / windowHeight),
       topItems.length - 1
-    ); 
+    );
     setScrollPosition(newPosition);
     setActiveIndex(newIndex);
   };
@@ -322,10 +314,11 @@ const Home = (props) => {
         </div>
 
         <div className="section-5">
-          <div className="animate-box" style={{overflow:'initial'}}>
+          <div className="animate-box" style={{ overflow: 'initial' }}>
             <h2>Trạm sạc đa năng All-in-one, đem tới trải nghiệm rảnh tay mỗi khi sử dụng</h2>
-            <div className="img-pro">
+            <div className="img-pro position-relative">
               <img src={ImageEcovacsX2} className='w-100' />
+              <img src={ImageThongSo} className="position-absolute" width={500} />
             </div>
           </div>
         </div>
@@ -385,24 +378,66 @@ const Home = (props) => {
 
         <div className="section-10">
           <div className="container">
-            <h2>DEEBOT X2</h2>
-            <p className="text-gray">Thiết kế thân máy vuông thành thạo trong cách thiết kế cân đối thẩm mỹ, thân máy bo cong mượt mà, các chi tiết được trau chuốt tỉ mỉ.</p>
-            <div className="deebot-image">
-              <img src={ImageEcovacX2Black} className='' />
-              <h5 className="mt-3">DEEBOT X2</h5>
-              <p>Xám không gian</p>
-              <Link to={'#'} className='btn buy'>
-                <span>Đặt bây giờ</span>
-              </Link>
+            <div className="x2-omni">
+              <h2>X2 Omni</h2>
+
+              <div className="deebot-image">
+                <img src={ImageEcovacX2Black} className='d-block' />
+                <Link to={'#'} className='btn buy mt-4'>
+                  <span>Đặt bây giờ</span>
+                </Link>
+              </div>
             </div>
-            <div className="list-info">
-              {listInfo && listInfo.map((item) => (
-                <div className="list-item mt-4">
-                  <img src={item.image} className='' />
-                  <h5 className="mt-3">{item.title}</h5>
-                  <p className="text-gray">{item.description}</p>
-                </div>
-              ))}
+
+            <div className="list-contact mt-4">
+              <ul className="list-unstyled d-flex align-items-center justify-content-around">
+                <li>
+                <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
+                    <img src={ImageLogoGiga} className="img-fluid" width={200} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
+                    <img src={ImageLogo2} className="img-fluid " width={200} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.lazada.vn/products/robot-hut-bui-lau-nha-thong-minh-ecovacs-x2-omni-tu-dong-giat-say-kho-gie-tro-ly-giong-noi-yiko-bao-hanh-chinh-hang-24-thang-i2399502761-s11708290922.html?" target={"_blank"}>
+                    <img src={ImageLogo3} className="img-fluid" width={200} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
+                    <img src={ImageLogo4} className="img-fluid" width={200} />
+                   
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="list-qrcode mt-4">
+              <ul className="list-unstyled d-flex align-items-center justify-content-around">
+                <li>
+                <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
+                    <img src={ImageQRCodeGiga} className="img-fluid" width={150} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
+                    <img src={ImageQRCode2} className="img-fluid" width={150} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.lazada.vn/products/robot-hut-bui-lau-nha-thong-minh-ecovacs-x2-omni-tu-dong-giat-say-kho-gie-tro-ly-giong-noi-yiko-bao-hanh-chinh-hang-24-thang-i2399502761-s11708290922.html" target={"_blank"}>
+                    <img src={ImageQRCode3} className="img-fluid" width={150} />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
+                    <img src={ImageQRCode4} className="img-fluid" width={150} />
+                   
+                  </a>
+                </li>
+              </ul>
             </div>
             <div className="line-middle"></div>
           </div>
@@ -414,3 +449,4 @@ const Home = (props) => {
 }
 
 export default Home
+

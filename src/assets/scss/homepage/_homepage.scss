@@ -193,7 +193,12 @@
     }
     .img-pro {
       position: absolute;
-      top: 25vh;
+      top: 5vh;
+      img.position-absolute {
+        bottom: 50px;
+        left: 50%;
+        border-radius: 25px;
+      }
     }
   }
 }
@@ -287,7 +292,7 @@
 
 .section-9 {
   position: relative;
-  padding: 180px 0;
+  padding: 100px 0;
   color: #1c1c1c;
   background-color: #fff;
   text-align: center;
@@ -318,6 +323,11 @@
     font-size: 45px;
     font-weight: 500;
     margin-bottom: 30px;
+  }
+  .deebot-image {
+    img {
+      margin: 0 auto;
+    }
   }
   p {
     font-size: 18px;
