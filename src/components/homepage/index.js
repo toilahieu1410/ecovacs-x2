@@ -167,7 +167,6 @@ const listData = [
   ]
   
 const Home = () => {
-
   
   return (
     <div className="homepage">
