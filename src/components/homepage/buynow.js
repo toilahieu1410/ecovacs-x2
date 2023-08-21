@@ -1,89 +1,98 @@
 import React from "react"
-import { Modal, ModalHeader, ModalBody, Button, Label } from 'reactstrap'
+import { Card, CardBody } from 'reactstrap'
+import { ToastContainer } from 'react-toastify'
 import { useForm } from "react-hook-form"
+import { _postReserve } from "../../api/home"
+import { toast } from "react-toastify"
+// import '../node_modules/react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css"
 
-const ModalBuyNow = (props) => {
+const ModalBuyNow = () => {
 
-  const {modal, toggleModal} = props
-
-  const { register, handleSubmit, formState: {errors}} = useForm({})
+  const { register, handleSubmit, formState: {errors}, reset} = useForm({})
 
   const onSubmit = (data) => {
-    console.log(data)
+    data.slug = 'dat-truoc-x2-omni'
+    if(data.note == '') {
+      delete data.note
+    }
+    _postReserve(data).then((res) => {
+      if (res.status == 200) {
+        toast.info(res.data.message)
+        reset()
+      }
+    })
   }
 
   return (
-    <div className="buy-now">
-    <Modal isOpen={modal} toggle={toggleModal} size='lg' centered>
-      <ModalHeader toggle={toggleModal}>
-        <label className="fw-normal">Thông tin mua hàng</label>
-      </ModalHeader>
-      <ModalBody>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="col-md-12">
+    <Card>
+      <CardBody className='pt-0'>
+      <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="col-md-12">
             <div class="row mb-3">
-                <label className="col-form-label col-md-3">Họ và tên</label>
-                <div className="col-md-9">
-                  <input 
-                    type={"text"}
-                    name="name"
-                    className="form-control"
-                    placeholder="Nhập họ và tên"
-                    {...register("name", {required: "Không được để trống"})}
-                  />
-                   {errors.name && <p className='text-danger'>Không để trống trường này</p>}
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label className="col-form-label col-md-3">Số điện thoại</label>
-                <div className="col-md-9">
-                  <input 
-                    type={"text"}
-                    name="phone"
-                    className="form-control"
-                    placeholder="Nhập số điện thoại"
-                    {...register("phone", {required: "Không được để trống"})}
-                  />
-                   {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label className="col-form-label col-md-3">Email</label>
-                <div className="col-md-9">
-                  <input 
-                    type={"email"}
-                    name="email"
-                    className="form-control"
-                    placeholder="Nhập địa chỉ"
-                    {...register("email")}
-                  />
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label className="col-form-label col-md-3">Ghi chú</label>
-                <div className="col-md-9">
-                <textarea
-                  type={"note"}
-                    name="note"
-                    className="form-control"
-                    placeholder="Ghi chú"
-                    {...register("note")}
-                >
-                Ghi chú
-                </textarea>
-               
-                </div>
-              </div>
-              <div className="d-flex justify-content-center">
-                <button className="btn btn-primary">
-                  Đặt trước
-                </button>
+            
+              <div className="col-md-9">
+                <input
+                  type={"text"}
+                  name="name"
+                  
+                  className="form-control bg-transparent"
+                  placeholder="Họ và tên"
+                  {...register("name", { required: "Không được để trống" })}
+                />
+                {errors.name && <p className='text-danger'>Không để trống trường này</p>}
               </div>
             </div>
+            <div class="row mb-3">
+              
+              <div className="col-md-9">
+                <input
+                  type={"text"}
+                  name="phone"
+                  className="form-control bg-transparent"
+                  placeholder="Số điện thoại"
+                  {...register("phone", { required: "Không được để trống" })}
+                />
+                {errors.phone && <p className='text-danger'>Không để trống trường này</p>}
+              </div>
+            </div>
+            <div class="row mb-3">
+              
+              <div className="col-md-9">
+                <input
+                  type={"email"}
+                  name="email"
+                  className="form-control bg-transparent"
+                  placeholder="Địa chỉ"
+                  {...register("email")}
+                />
+              </div>
+            </div>
+            <div class="row mb-3">
+              
+              <div className="col-md-9">
+                <textarea
+                  type={"note"}
+                  name="note"
+                  className="form-control bg-transparent"
+                  placeholder="Ghi chú"
+                  {...register("note")}
+                >
+          
+                </textarea>
+
+              </div>
+            </div>
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-primary">
+                Đặt trước
+              </button>
+            </div>
+          </div>
         </form>
-      </ModalBody>
-    </Modal>
-    </div>
+      </CardBody>
+      <ToastContainer autoClose={2000} />
+    </Card>
   )
 }
 
