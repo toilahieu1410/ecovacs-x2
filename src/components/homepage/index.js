@@ -163,7 +163,7 @@ const listVideo1 = [
   },
   {
     id: 6,
-    title: `Mạnh hơn: <span>8000</span><i>Pa</i> lốc xoáy`,
+    title: `Mạnh hơn: <span>8000</span><i>Pa</i>  lốc xoáy`,
     videoId: Video6,
   },
 ]
@@ -218,10 +218,10 @@ const Home = () => {
         <div className="section-2">
           <div className="container">
             <ScrollAnimation
-              offset={300}
+              offset={1000}
               animateIn='slideInUp'
-              duration={0.5}
-              delay={100}
+              duration={0.8}
+              delay={600}
               animateOut='slideInUp'
               animateOnce={true}
             >
