@@ -163,9 +163,7 @@ const listVideo1 = [
   },
   {
     id: 6,
-
     title: `Lực hút: <span>8000</span><i>Pa</i> lốc xoáy`,
-
     videoId: Video6,
   },
 ]
@@ -210,52 +208,46 @@ const Home = () => {
       <div className="list-banner">
         <div className="section-1">
           <ReactPlayer
-            className="data-video w-100 h-100 "
+            className="data-video w-100 h-100"
             muted={true}
             playing={true}
             url={videoBanner}
-            loop={true}
+            playsinline
+            controls
           />
         </div>
         <div className="section-2">
           <div className="container">
-            <ScrollAnimation
-              offset={1000}
-              animateIn='slideInUp'
-              duration={0.8}
-              delay={600}
-              animateOut='slideInUp'
-              animateOnce={true}
-            >
-              <div className="top-parts">
-                {listData && listData.map((item, index) => (
-                  index < 2 && (
-                    <div className="item-part">
-                      <div className="item-img">
-                        <img src={item.image} />
-                      </div>
-                      <h4 className="text-white">{item.title}</h4>
-                      <p className="text-gray">{ReactHtmlParser(item.description)}</p>
-                      {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
+
+            <div className="top-parts">
+              {listData && listData.map((item, index) => (
+                index < 2 && (
+                  <div className="item-part">
+                    <div className="item-img">
+                      <img src={item.image} />
                     </div>
-                  )
-                ))}
-              </div>
-              <div className="bottom-parts">
-                {listData && listData.map((item, index) => (
-                  index >= 2 && (
-                    <div className="item-part">
-                      <div className="item-img">
-                        <img src={item.image} />
-                      </div>
-                      <h4 className="text-white">{item.title}</h4>
-                      <p className="text-gray">{item.description}</p>
-                      {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
+                    <h4 className="text-white">{item.title}</h4>
+                    <p className="text-gray">{ReactHtmlParser(item.description)}</p>
+                    {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
+                  </div>
+                )
+              ))}
+            </div>
+            <div className="bottom-parts">
+              {listData && listData.map((item, index) => (
+                index >= 2 && (
+                  <div className="item-part">
+                    <div className="item-img">
+                      <img src={item.image} />
                     </div>
-                  )
-                ))}
-              </div>
-            </ScrollAnimation>
+                    <h4 className="text-white">{item.title}</h4>
+                    <p className="text-gray">{item.description}</p>
+                    {/* <Link className="text-decoration-none" to={'#'}>Mở khóa công nghệ mới <img src={IconDown} className="ml-10" width={20} /> </Link> */}
+                  </div>
+                )
+              ))}
+            </div>
+
           </div>
         </div>
         <div className="section-3">
@@ -289,9 +281,9 @@ const Home = () => {
                 mousewheel={true}
                 pagination={{
                   clickable: true,
-                  renderBullet: function (index, className) {
-                    return '<span class="' + className + '">' + (index + 1) + '</span>';
-                  }
+                  // renderBullet: function (index, className) {
+                  //   return '<span class="' + className + '">' + (index + 1) + '</span>';
+                  // }
                 }}
                 modules={[Mousewheel, Pagination]}
                 className="mySwiper"
@@ -309,6 +301,8 @@ const Home = () => {
                           muted={true}
                           playing={true}
                           loop={true}
+                          playsinline
+                          controls
                           url={item.videoId} />
                       </div>
                     </SwiperSlide>
@@ -330,9 +324,17 @@ const Home = () => {
         </div>
         <div className="section-6">
           <div className="container">
-              <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} loop={true} url={Video7} />
+            <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} loop={true} url={Video7}
+              playsinline
+              controls
+            />
           </div>
-          <ReactPlayer className="data-video w-100 mt-5" height={1000} muted={true} playing={true} loop={true} url={Video8} />
+          <ReactPlayer className="data-video w-100 mt-5"
+            height={600}
+            muted={true}
+            playsinline
+            controls
+            playing={true} loop={true} url={Video8} />
         </div>
         <div className="section-7">
         </div>
@@ -367,7 +369,14 @@ const Home = () => {
               3D Mapping 2.0 <br />
               Với bản đồ 3D mới được nâng cấp, Deebot X2 Omni sẽ tiến hành dọn dẹp khi bạn chạm vuốt ngón tay tới vị trí cần làm sạch trên ứng dụng Ecovacs Home.
             </p>
-            <ReactPlayer className="data-video w-100 h-100" muted={true} playing={true} loop={true} url={Video10} />
+            <ReactPlayer className="data-video w-100 h-100"
+              playsinline
+              controls
+              muted={true}
+              playing={true}
+              loop={true}
+
+              url={Video10} />
           </div>
         </div>
 
@@ -378,62 +387,43 @@ const Home = () => {
               <div className="deebot-image">
                 <img src={ImageEcovacX2Black} className='d-block' />
                 <p className="btn buy mt-4">Đặt bây giờ <i className="fa fa-chevron-down ml-5"></i></p>
-          
+
               </div>
             </div>
 
             <div className="list-contact mt-4">
               <ul className="list-unstyled d-flex align-items-center justify-content-around">
-                <li>
+                <li className="d-flex flex-column">
                   <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
-                    <img src={ImageLogoGiga} className="img-fluid" width={200} />
+                    <img src={ImageLogoGiga} className="img-fluid" width={200} style={{ height: 80, objectFit: 'contain' }} />
+
                   </a>
+                  <img src={ImageQRCodeGiga} className="img-fluid mt-3" width={150} style={{ margin: '0 auto' }} />
                 </li>
-                <li>
+                <li className="d-flex flex-column">
                   <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
                     <img src={ImageLogo4} className="img-fluid" width={200} />
 
                   </a>
+                  <img src={ImageQRCode4} className="img-fluid " width={150} style={{ margin: '0 auto' }} />
                 </li>
-                <li>
+                <li className="d-flex flex-column">
                   <a href="https://www.lazada.vn/products/robot-hut-bui-lau-nha-thong-minh-ecovacs-x2-omni-tu-dong-giat-say-kho-gie-tro-ly-giong-noi-yiko-bao-hanh-chinh-hang-24-thang-i2399502761-s11708290922.html?" target={"_blank"}>
                     <img src={ImageLogo3} className="img-fluid" width={200} />
                   </a>
+                  <img src={ImageQRCode3} className="img-fluid" width={150} style={{ margin: '0 auto' }} />
                 </li>
-                <li>
+                <li className="d-flex flex-column">
                   <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
                     <img src={ImageLogo2} className="img-fluid " width={200} />
                   </a>
+                  <img src={ImageQRCode2} className="img-fluid" width={150} style={{ margin: '0 auto' }} />
                 </li>
 
               </ul>
             </div>
-            <div className="list-qrcode mt-4">
-              <ul className="list-unstyled d-flex align-items-center justify-content-around">
-                <li>
-                  <a href="https://gigadigital.vn/robot-hut-bui/robot-hut-bui-lau-nha-ecovacs-deebot-x2-omni" target={"_blank"}>
-                    <img src={ImageQRCodeGiga} className="img-fluid" width={150} />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
-                    <img src={ImageQRCode4} className="img-fluid" width={150} />
 
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.lazada.vn/products/robot-hut-bui-lau-nha-thong-minh-ecovacs-x2-omni-tu-dong-giat-say-kho-gie-tro-ly-giong-noi-yiko-bao-hanh-chinh-hang-24-thang-i2399502761-s11708290922.html" target={"_blank"}>
-                    <img src={ImageQRCode3} className="img-fluid" width={150} />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
-                    <img src={ImageQRCode2} className="img-fluid" width={150} />
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <ModalBuyNow/>
+            <ModalBuyNow />
             <div className="line-middle"></div>
           </div>
         </div>
