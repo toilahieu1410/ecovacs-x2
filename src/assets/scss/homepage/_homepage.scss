@@ -1,5 +1,4 @@
 .list-banner {
-  overflow: auto;
   .section-1 {
     video {
       display: block;
@@ -96,7 +95,10 @@
     justify-content: center;
     align-items: center;
     .swiper-pagination {
-      display: none;
+      .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+      }
     }
     .swiper-slide {
       display: block;
@@ -178,6 +180,7 @@
 }
 
 .section-5 {
+  padding-bottom: 50px;
   height: 120vh;
   position: relative;
   color: rgb(28, 28, 28);
