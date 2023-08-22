@@ -211,9 +211,9 @@ const Home = () => {
             className="data-video w-100 h-100"
             muted={true}
             playing={true}
+            loop={true}
             url={videoBanner}
             playsinline
-            controls
           />
         </div>
         <div className="section-2">
@@ -302,7 +302,7 @@ const Home = () => {
                           playing={true}
                           loop={true}
                           playsinline
-                          controls
+                          
                           url={item.videoId} />
                       </div>
                     </SwiperSlide>
@@ -326,14 +326,14 @@ const Home = () => {
           <div className="container">
             <ReactPlayer className="data-video-small w-100 h-100" muted={true} playing={true} loop={true} url={Video7}
               playsinline
-              controls
+              
             />
           </div>
           <ReactPlayer className="data-video w-100 mt-5"
             height={600}
             muted={true}
             playsinline
-            controls
+            
             playing={true} loop={true} url={Video8} />
         </div>
         <div className="section-7">
@@ -398,31 +398,29 @@ const Home = () => {
                     <img src={ImageLogoGiga} className="img-fluid" width={200} style={{ height: 80, objectFit: 'contain' }} />
 
                   </a>
-                  <img src={ImageQRCodeGiga} className="img-fluid mt-3" width={150} style={{ margin: '0 auto' }} />
+                  <img src={ImageQRCodeGiga} className="img-fluid mt-3 img-qrcode" width={150} style={{ margin: '0 auto' }} />
                 </li>
                 <li className="d-flex flex-column">
                   <a href="https://shopee.vn/product/752342657/22077063358" target={"_blank"}>
                     <img src={ImageLogo4} className="img-fluid" width={200} />
 
                   </a>
-                  <img src={ImageQRCode4} className="img-fluid " width={150} style={{ margin: '0 auto' }} />
+                  <img src={ImageQRCode4} className="img-fluid img-qrcode" width={150} style={{ margin: '0 auto' }} />
                 </li>
                 <li className="d-flex flex-column">
                   <a href="https://www.lazada.vn/products/robot-hut-bui-lau-nha-thong-minh-ecovacs-x2-omni-tu-dong-giat-say-kho-gie-tro-ly-giong-noi-yiko-bao-hanh-chinh-hang-24-thang-i2399502761-s11708290922.html?" target={"_blank"}>
                     <img src={ImageLogo3} className="img-fluid" width={200} />
                   </a>
-                  <img src={ImageQRCode3} className="img-fluid" width={150} style={{ margin: '0 auto' }} />
+                  <img src={ImageQRCode3} className="img-fluid img-qrcode" width={150} style={{ margin: '0 auto' }} />
                 </li>
                 <li className="d-flex flex-column">
                   <a href="https://shop.tiktok.com/view/product/1729686821185948273?region=VN&locale=vi-VN" target={"_blank"}>
                     <img src={ImageLogo2} className="img-fluid " width={200} />
                   </a>
-                  <img src={ImageQRCode2} className="img-fluid" width={150} style={{ margin: '0 auto' }} />
+                  <img src={ImageQRCode2} className="img-fluid img-qrcode" width={150} style={{ margin: '0 auto' }} />
                 </li>
-
               </ul>
             </div>
-
             <ModalBuyNow />
             <div className="line-middle"></div>
           </div>
