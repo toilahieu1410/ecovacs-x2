@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import LogoEcovacs from '../../assets/images/logo.png'
+import LogoEcovacs from '../../assets/images/ecovacs-logo-vector.svg'
 import { Modal, ModalHeader, ModalBody, Button, Label } from 'reactstrap'
 import QRcodeGiga from '../../assets/images/qrcode_giga.jpg'
 
