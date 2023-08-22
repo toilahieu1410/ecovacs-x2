@@ -163,7 +163,7 @@ const listVideo1 = [
   },
   {
     id: 6,
-    title: `Mạnh hơn: <span>8000</span><i>Pa</i> lốc xoáy`,
+    title: `Lực hút: <span>8000</span><i>Pa</i> lốc xoáy`,
     videoId: Video6,
   },
 ]
